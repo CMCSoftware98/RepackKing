@@ -4,6 +4,8 @@
 # RepackKing Update Script for Ubuntu
 # This script will:
 # - Check and install Git if not installed
+# - Check and install Node.js/npm if not installed
+# - Check and install PM2 if not installed
 # - Pull latest changes from the repository
 # - Rebuild frontend and backend
 # - Restart the application
@@ -18,10 +20,11 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Configuration - EDIT THESE VALUES
+# Configuration
 APP_DIR="/var/www/repackking"
-REPO_URL=""
+REPO_URL="https://github.com/CMCSoftware98/RepackKing"
 BRANCH="main"
+NODE_VERSION="20"
 
 #===============================================================================
 # Helper Functions
@@ -70,6 +73,51 @@ install_git() {
         apt update
         apt install -y git
         print_success "Git installed ($(git --version))"
+    fi
+}
+
+#===============================================================================
+# Node.js Installation
+#===============================================================================
+
+install_nodejs() {
+    print_header "Checking Node.js Installation"
+    
+    if command -v node &> /dev/null; then
+        current_version=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
+        if [[ "$current_version" -ge "$NODE_VERSION" ]]; then
+            print_success "Node.js $(node -v) is already installed"
+            return
+        else
+            print_warning "Node.js version is too old, upgrading..."
+        fi
+    else
+        print_info "Node.js is not installed. Installing..."
+    fi
+    
+    # Install Node.js
+    apt update
+    apt install -y curl
+    curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -
+    apt install -y nodejs
+    
+    print_success "Node.js $(node -v) installed"
+    print_success "npm $(npm -v) installed"
+}
+
+#===============================================================================
+# PM2 Installation
+#===============================================================================
+
+install_pm2() {
+    print_header "Checking PM2 Installation"
+    
+    if command -v pm2 &> /dev/null; then
+        print_success "PM2 is already installed"
+    else
+        print_info "PM2 is not installed. Installing..."
+        npm install -g pm2
+        print_success "PM2 installed"
     fi
 }
 
@@ -300,6 +348,8 @@ main() {
     
     check_root
     install_git
+    install_nodejs
+    install_pm2
     setup_repository
     pull_changes
     build_application
