@@ -1,0 +1,43 @@
+// Ocean Dark Theme Variables
+$background-deep: #0a1929;
+$background-surface: #0d2137;
+$background-variant: #132f4c;
+$background-bright: #1a3a5c;
+
+$primary: #0077b6;
+$primary-dark: #005f8a;
+$secondary: #00b4d8;
+$accent: #48cae4;
+$seafoam: #90e0ef;
+
+$text-primary: #ffffff;
+$text-secondary: #b0bec5;
+$text-muted: #78909c;
+
+$border-color: #1e4976;
+
+// Typography
+$font-heading: 'Montserrat', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;
+
+// Glassmorphism
+$glass-background: rgba(13, 33, 55, 0.7);
+$glass-border: rgba(72, 202, 228, 0.2);
+$glass-blur: 12px;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+$shadow-glow: 0 0 20px rgba(0, 119, 182, 0.4);
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;

@@ -1,0 +1,207 @@
+@use 'variables' as *;
+@use 'animations';
+
+// Reset & Base Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $background-deep;
+  color: $text-primary;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $text-primary;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+// Links
+a {
+  color: $accent;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $background-deep;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $border-color;
+  border-radius: 4px;
+
+  &:hover {
+    background: $primary;
+  }
+}
+
+// Selection
+::selection {
+  background: rgba($primary, 0.4);
+  color: $text-primary;
+}
+
+// Glassmorphism utility
+.glass {
+  background: $glass-background;
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  border: 1px solid $glass-border;
+}
+
+// Page transitions
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+// Fade transition
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// Scale transition
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.3s ease;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+// Slide transitions
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.4s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+// Gradient text utility
+.gradient-text {
+  background: linear-gradient(135deg, $primary 0%, $accent 50%, $seafoam 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Glow effects
+.glow-primary {
+  box-shadow: $shadow-glow;
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba($accent, 0.4);
+}
+
+// Section spacing
+.section {
+  padding: 4rem 0;
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 0;
+  }
+}
+
+// Container override for wider content
+.container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// Visibility utilities for animations
+.invisible {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+// Fix Vuetify text field label/placeholder overlap
+// Hide placeholder when label is not floating (field is empty and not focused)
+// This applies to v-text-field, v-textarea, v-select, v-autocomplete, etc.
+.v-field--variant-outlined {
+  // Hide placeholder by default when label is in resting position
+  input::placeholder,
+  textarea::placeholder {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease;
+  }
+  
+  // Show placeholder when label is floating (focused or has content)
+  &.v-field--focused,
+  &.v-field--dirty {
+    input::placeholder,
+    textarea::placeholder {
+      opacity: 0.5 !important;
+    }
+  }
+}

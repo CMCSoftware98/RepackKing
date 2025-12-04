@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0077b6"/>
+      <stop offset="50%" style="stop-color:#00b4d8"/>
+      <stop offset="100%" style="stop-color:#48cae4"/>
+    </linearGradient>
+    <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#005f8a"/>
+      <stop offset="50%" style="stop-color:#0077b6"/>
+      <stop offset="100%" style="stop-color:#005f8a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Crown Base -->
+  <path d="M12 44 L16 20 L24 32 L32 14 L40 32 L48 20 L52 44 Z" 
+        fill="url(#crownGradient)" 
+        stroke="#48cae4" 
+        stroke-width="1"/>
+  
+  <!-- Crown Jewels (circles on peaks) -->
+  <circle cx="32" cy="12" r="3" fill="#48cae4"/>
+  <circle cx="16" cy="18" r="2.5" fill="#00b4d8"/>
+  <circle cx="48" cy="18" r="2.5" fill="#00b4d8"/>
+  
+  <!-- Decorative dots on crown -->
+  <circle cx="24" cy="30" r="1.5" fill="#90e0ef"/>
+  <circle cx="32" cy="26" r="1.5" fill="#90e0ef"/>
+  <circle cx="40" cy="30" r="1.5" fill="#90e0ef"/>
+  
+  <!-- Wrapped Ribbon -->
+  <path d="M8 42 Q12 38, 20 40 T32 38 T44 40 T56 42" 
+        fill="none" 
+        stroke="url(#ribbonGradient)" 
+        stroke-width="4"
+        stroke-linecap="round"/>
+  
+  <!-- Ribbon Wrap (crossing) -->
+  <path d="M10 48 Q18 44, 26 48 T42 44 T54 48" 
+        fill="none" 
+        stroke="url(#ribbonGradient)" 
+        stroke-width="3"
+        stroke-linecap="round"/>
+  
+  <!-- Crown Base Band -->
+  <rect x="12" y="44" width="40" height="6" rx="2" fill="url(#ribbonGradient)"/>
+  
+  <!-- Ribbon ends -->
+  <path d="M10 50 L6 58 L12 54 L14 50" fill="#0077b6"/>
+  <path d="M54 50 L58 58 L52 54 L50 50" fill="#0077b6"/>
+</svg>
