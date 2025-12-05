@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TGames Logo Export</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px;
+      background: #1a1a1a;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-box {
+      background: #0a1a14;
+      padding: 20px;
+      border-radius: 16px;
+    }
+    .logo-box.transparent {
+      background: transparent;
+    }
+    label {
+      font-size: 14px;
+      color: #888;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #00ff87;
+    }
+  </style>
+</head>
+<body>
+  <h1>TGames Logo - Right-click to save as PNG</h1>
+  
+  <h2>With Dark Background</h2>
+  
+  <div class="logo-container">
+    <div class="logo-box">
+      <svg viewBox="0 0 64 64" width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="torrentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00ff87"/>
+            <stop offset="50%" style="stop-color:#00d4aa"/>
+            <stop offset="100%" style="stop-color:#60efff"/>
+          </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="30" fill="rgba(0, 255, 135, 0.1)" stroke="url(#torrentGradient)" stroke-width="2"/>
+        <path d="M12 10 L52 10 L52 20 L37 20 L37 54 L27 54 L27 20 L12 20 Z" fill="url(#torrentGradient)"/>
+        <path d="M32 24 L38 32 L34 32 L34 38 L30 38 L30 32 L26 32 Z" fill="#0a1a14" opacity="0.8"/>
+        <path d="M32 40 L36 46 L33 46 L33 50 L31 50 L31 46 L28 46 Z" fill="#0a1a14" opacity="0.6"/>
+        <circle cx="32" cy="4" r="2" fill="#00ff87"/>
+        <circle cx="58" cy="32" r="2" fill="#60efff"/>
+        <circle cx="32" cy="60" r="2" fill="#00d4aa"/>
+        <circle cx="6" cy="32" r="2" fill="#00ff87"/>
+      </svg>
+    </div>
+    <label>512x512 - With background</label>
+  </div>
+
+  <h2>Transparent Background (for emails)</h2>
+  
+  <div class="logo-container">
+    <div class="logo-box transparent">
+      <svg viewBox="0 0 64 64" width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="torrentGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00ff87"/>
+            <stop offset="50%" style="stop-color:#00d4aa"/>
+            <stop offset="100%" style="stop-color:#60efff"/>
+          </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="30" fill="rgba(0, 255, 135, 0.15)" stroke="url(#torrentGradient2)" stroke-width="2"/>
+        <path d="M12 10 L52 10 L52 20 L37 20 L37 54 L27 54 L27 20 L12 20 Z" fill="url(#torrentGradient2)"/>
+        <path d="M32 24 L38 32 L34 32 L34 38 L30 38 L30 32 L26 32 Z" fill="#0a1a14" opacity="0.8"/>
+        <path d="M32 40 L36 46 L33 46 L33 50 L31 50 L31 46 L28 46 Z" fill="#0a1a14" opacity="0.6"/>
+        <circle cx="32" cy="4" r="2" fill="#00ff87"/>
+        <circle cx="58" cy="32" r="2" fill="#60efff"/>
+        <circle cx="32" cy="60" r="2" fill="#00d4aa"/>
+        <circle cx="6" cy="32" r="2" fill="#00ff87"/>
+      </svg>
+    </div>
+    <label>512x512 - Transparent</label>
+  </div>
+
+  <h2>Smaller Sizes</h2>
+  
+  <div style="display: flex; gap: 40px; align-items: flex-end;">
+    <div class="logo-container">
+      <div class="logo-box">
+        <svg viewBox="0 0 64 64" width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="torrentGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00ff87"/>
+              <stop offset="50%" style="stop-color:#00d4aa"/>
+              <stop offset="100%" style="stop-color:#60efff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="rgba(0, 255, 135, 0.1)" stroke="url(#torrentGradient3)" stroke-width="2"/>
+          <path d="M12 10 L52 10 L52 20 L37 20 L37 54 L27 54 L27 20 L12 20 Z" fill="url(#torrentGradient3)"/>
+          <path d="M32 24 L38 32 L34 32 L34 38 L30 38 L30 32 L26 32 Z" fill="#0a1a14" opacity="0.8"/>
+          <path d="M32 40 L36 46 L33 46 L33 50 L31 50 L31 46 L28 46 Z" fill="#0a1a14" opacity="0.6"/>
+          <circle cx="32" cy="4" r="2" fill="#00ff87"/>
+          <circle cx="58" cy="32" r="2" fill="#60efff"/>
+          <circle cx="32" cy="60" r="2" fill="#00d4aa"/>
+          <circle cx="6" cy="32" r="2" fill="#00ff87"/>
+        </svg>
+      </div>
+      <label>256x256</label>
+    </div>
+    
+    <div class="logo-container">
+      <div class="logo-box">
+        <svg viewBox="0 0 64 64" width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="torrentGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00ff87"/>
+              <stop offset="50%" style="stop-color:#00d4aa"/>
+              <stop offset="100%" style="stop-color:#60efff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="rgba(0, 255, 135, 0.1)" stroke="url(#torrentGradient4)" stroke-width="2"/>
+          <path d="M12 10 L52 10 L52 20 L37 20 L37 54 L27 54 L27 20 L12 20 Z" fill="url(#torrentGradient4)"/>
+          <path d="M32 24 L38 32 L34 32 L34 38 L30 38 L30 32 L26 32 Z" fill="#0a1a14" opacity="0.8"/>
+          <path d="M32 40 L36 46 L33 46 L33 50 L31 50 L31 46 L28 46 Z" fill="#0a1a14" opacity="0.6"/>
+          <circle cx="32" cy="4" r="2" fill="#00ff87"/>
+          <circle cx="58" cy="32" r="2" fill="#60efff"/>
+          <circle cx="32" cy="60" r="2" fill="#00d4aa"/>
+          <circle cx="6" cy="32" r="2" fill="#00ff87"/>
+        </svg>
+      </div>
+      <label>128x128</label>
+    </div>
+    
+    <div class="logo-container">
+      <div class="logo-box">
+        <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="torrentGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00ff87"/>
+              <stop offset="50%" style="stop-color:#00d4aa"/>
+              <stop offset="100%" style="stop-color:#60efff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="rgba(0, 255, 135, 0.1)" stroke="url(#torrentGradient5)" stroke-width="2"/>
+          <path d="M12 10 L52 10 L52 20 L37 20 L37 54 L27 54 L27 20 L12 20 Z" fill="url(#torrentGradient5)"/>
+          <path d="M32 24 L38 32 L34 32 L34 38 L30 38 L30 32 L26 32 Z" fill="#0a1a14" opacity="0.8"/>
+          <path d="M32 40 L36 46 L33 46 L33 50 L31 50 L31 46 L28 46 Z" fill="#0a1a14" opacity="0.6"/>
+          <circle cx="32" cy="4" r="2" fill="#00ff87"/>
+          <circle cx="58" cy="32" r="2" fill="#60efff"/>
+          <circle cx="32" cy="60" r="2" fill="#00d4aa"/>
+          <circle cx="6" cy="32" r="2" fill="#00ff87"/>
+        </svg>
+      </div>
+      <label>64x64 (favicon)</label>
+    </div>
+  </div>
+  
+  <p style="margin-top: 40px; color: #666;">
+    Tip: Right-click any logo above and select "Save image as..." to download as PNG
+  </p>
+</body>
+</html>
