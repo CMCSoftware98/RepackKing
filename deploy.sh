@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #===============================================================================
-# RepackKing Deploy & Update Script for Ubuntu
+# TorrentGames Deploy & Update Script for Ubuntu
 # This script will:
 # - Check and install all required dependencies (Git, Node.js, Nginx, Certbot, PM2)
 # - Clone or pull latest changes from the repository
@@ -28,9 +28,9 @@ NC='\033[0m' # No Color
 # Configuration
 DOMAIN=""
 EMAIL=""
-APP_DIR="/var/www/repackking"
+APP_DIR="/var/www/torrentgames"
 DATA_DIR="/root/data"
-REPO_URL="https://github.com/CMCSoftware98/RepackKing"
+REPO_URL="https://github.com/CMCSoftware98/TorrentGames"
 BRANCH="main"
 NODE_VERSION="20"
 BACKEND_PORT="3000"
@@ -78,8 +78,8 @@ prompt_config() {
     print_header "Configuration"
     
     # For update mode, try to read existing domain from nginx config
-    if [[ "$UPDATE_MODE" == true && -f "/etc/nginx/sites-available/repackking" ]]; then
-        DOMAIN=$(grep -m1 "server_name" /etc/nginx/sites-available/repackking | awk '{print $2}' | tr -d ';')
+    if [[ "$UPDATE_MODE" == true && -f "/etc/nginx/sites-available/torrentgames" ]]; then
+        DOMAIN=$(grep -m1 "server_name" /etc/nginx/sites-available/torrentgames | awk '{print $2}' | tr -d ';')
         if [[ -n "$DOMAIN" ]]; then
             print_info "Detected existing domain: $DOMAIN"
         fi
@@ -262,7 +262,7 @@ setup_application() {
         # Backup existing files if directory is not empty
         if [[ "$(ls -A $APP_DIR 2>/dev/null)" ]]; then
             print_warning "Directory not empty. Backing up existing files..."
-            backup_dir="/tmp/repackking_backup_$(date +%Y%m%d_%H%M%S)"
+            backup_dir="/tmp/torrentgames_backup_$(date +%Y%m%d_%H%M%S)"
             mkdir -p "$backup_dir"
             mv "$APP_DIR"/* "$backup_dir"/ 2>/dev/null || true
             mv "$APP_DIR"/.* "$backup_dir"/ 2>/dev/null || true
@@ -320,9 +320,9 @@ create_env_file() {
         print_info "Updating existing .env file..."
         # Update DATABASE_PATH if it exists, otherwise append
         if grep -q "DATABASE_PATH" "$ENV_FILE"; then
-            sed -i "s|DATABASE_PATH=.*|DATABASE_PATH=$DATA_DIR/database.sqlite|" "$ENV_FILE"
+            sed -i "s|DATABASE_PATH=.*|DATABASE_PATH=$DATA_DIR/torrentgames.db|" "$ENV_FILE"
         else
-            echo "DATABASE_PATH=$DATA_DIR/database.sqlite" >> "$ENV_FILE"
+            echo "DATABASE_PATH=$DATA_DIR/torrentgames.db" >> "$ENV_FILE"
         fi
         print_success "Environment file updated"
     else
@@ -335,7 +335,7 @@ create_env_file() {
 NODE_ENV=production
 PORT=$BACKEND_PORT
 JWT_SECRET=$JWT_SECRET
-DATABASE_PATH=$DATA_DIR/database.sqlite
+DATABASE_PATH=$DATA_DIR/torrentgames.db
 EOF
         
         print_success "Environment file created"
@@ -344,7 +344,7 @@ EOF
     chmod 600 "$ENV_FILE"
     chown www-data:www-data "$ENV_FILE"
     
-    print_info "Database location: $DATA_DIR/database.sqlite"
+    print_info "Database location: $DATA_DIR/torrentgames.db"
 }
 
 #===============================================================================
@@ -354,7 +354,7 @@ EOF
 configure_nginx() {
     print_header "Configuring Nginx"
     
-    NGINX_CONF="/etc/nginx/sites-available/repackking"
+    NGINX_CONF="/etc/nginx/sites-available/torrentgames"
     
     # Check if SSL is already configured
     SSL_EXISTS=false
@@ -423,7 +423,7 @@ server {
 EOF
     
     # Enable site
-    ln -sf "$NGINX_CONF" /etc/nginx/sites-enabled/repackking
+    ln -sf "$NGINX_CONF" /etc/nginx/sites-enabled/torrentgames
     
     # Remove default site
     rm -f /etc/nginx/sites-enabled/default
@@ -490,13 +490,13 @@ setup_pm2() {
     cd "$APP_DIR/server"
     
     # Check if process is already running
-    if pm2 list | grep -q "repackking-api"; then
+    if pm2 list | grep -q "torrentgames-api"; then
         print_info "Restarting existing process..."
-        pm2 restart repackking-api
+        pm2 restart torrentgames-api
     else
         print_info "Starting new process..."
         pm2 start dist/index.js \
-            --name "repackking-api" \
+            --name "torrentgames-api" \
             --env production \
             --max-memory-restart 500M
     fi
@@ -577,7 +577,7 @@ show_status() {
     fi
     
     # Check PM2
-    if pm2 list | grep -q "repackking-api"; then
+    if pm2 list | grep -q "torrentgames-api"; then
         print_success "Backend API is running"
     else
         print_error "Backend API is not running"
@@ -598,8 +598,8 @@ show_status() {
     fi
     
     # Check Database
-    if [[ -f "$DATA_DIR/database.sqlite" ]]; then
-        print_success "Database exists at $DATA_DIR/database.sqlite"
+    if [[ -f "$DATA_DIR/torrentgames.db" ]]; then
+        print_success "Database exists at $DATA_DIR/torrentgames.db"
     else
         print_info "Database will be created on first run"
     fi
@@ -619,8 +619,8 @@ show_status() {
     echo ""
     echo -e "Useful commands:"
     echo -e "  ${YELLOW}sudo ./deploy.sh --update${NC}    - Pull latest changes and rebuild"
-    echo -e "  ${YELLOW}pm2 logs repackking-api${NC}      - View backend logs"
-    echo -e "  ${YELLOW}pm2 restart repackking-api${NC}   - Restart backend"
+    echo -e "  ${YELLOW}pm2 logs torrentgames-api${NC}    - View backend logs"
+    echo -e "  ${YELLOW}pm2 restart torrentgames-api${NC} - Restart backend"
     echo -e "  ${YELLOW}pm2 status${NC}                   - Check PM2 status"
     echo -e "  ${YELLOW}sudo nginx -t${NC}                - Test Nginx config"
     echo -e "  ${YELLOW}sudo systemctl reload nginx${NC}  - Reload Nginx"
@@ -635,13 +635,12 @@ show_status() {
 
 main() {
     clear
-    echo -e "${BLUE}"
-    echo "  ____                       _    _  ___             "
-    echo " |  _ \ ___ _ __   __ _  ___| | _| |/ (_)_ __   __ _ "
-    echo " | |_) / _ \ '_ \ / _\` |/ __| |/ / | | | '_ \ / _\` |"
-    echo " |  _ <  __/ |_) | (_| | (__|   <| | | | | | | (_| |"
-    echo " |_| \_\___| .__/ \__,_|\___|_|\_\_| |_|_| |_|\__, |"
-    echo "           |_|                                |___/ "
+    echo -e "${GREEN}"
+    echo "  _____                         _    ____                           "
+    echo " |_   _|__  _ __ _ __ ___ _ __ | |_ / ___| __ _ _ __ ___   ___  ___ "
+    echo "   | |/ _ \| '__| '__/ _ \ '_ \| __| |  _ / _\` | '_ \` _ \ / _ \/ __|"
+    echo "   | | (_) | |  | | |  __/ | | | |_| |_| | (_| | | | | | |  __/\__ \\"
+    echo "   |_|\___/|_|  |_|  \___|_| |_|\__|\____|\__,_|_| |_| |_|\___||___/"
     echo -e "${NC}"
     
     if [[ "$UPDATE_MODE" == true ]]; then

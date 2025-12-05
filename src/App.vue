@@ -23,25 +23,24 @@ onMounted(() => {
     <Transition name="fade">
       <div v-if="!isAppReady" class="loading-screen">
         <div class="loading-logo">
-          <svg viewBox="0 0 64 64" width="80" height="80" class="crown-spinner">
+          <svg viewBox="0 0 64 64" width="80" height="80" class="torrent-spinner">
             <defs>
               <linearGradient id="loadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0077b6"/>
-                <stop offset="50%" stop-color="#00b4d8"/>
-                <stop offset="100%" stop-color="#48cae4"/>
+                <stop offset="0%" stop-color="#00ff87"/>
+                <stop offset="50%" stop-color="#00d4aa"/>
+                <stop offset="100%" stop-color="#60efff"/>
               </linearGradient>
             </defs>
+            <circle cx="32" cy="32" r="30" fill="rgba(0, 255, 135, 0.1)" stroke="url(#loadGradient)" stroke-width="2"/>
             <path 
-              d="M12 44 L16 20 L24 32 L32 14 L40 32 L48 20 L52 44 Z" 
+              d="M12 10 L52 10 L52 20 L37 20 L37 54 L27 54 L27 20 L12 20 Z" 
               fill="url(#loadGradient)"
             />
-            <circle cx="32" cy="12" r="3" fill="#48cae4"/>
-            <circle cx="16" cy="18" r="2.5" fill="#00b4d8"/>
-            <circle cx="48" cy="18" r="2.5" fill="#00b4d8"/>
-            <rect x="12" y="44" width="40" height="6" rx="2" fill="#0077b6"/>
+            <path d="M32 24 L38 32 L34 32 L34 38 L30 38 L30 32 L26 32 Z" fill="#0a1a14" opacity="0.8"/>
+            <path d="M32 40 L36 46 L33 46 L33 50 L31 50 L31 46 L28 46 Z" fill="#0a1a14" opacity="0.6"/>
           </svg>
         </div>
-        <p class="loading-text">Loading RepackKing...</p>
+        <p class="loading-text">Loading TGames...</p>
       </div>
     </Transition>
 
@@ -64,7 +63,7 @@ onMounted(() => {
 
 <style lang="scss">
 .app-root {
-  background: #0a1929 !important;
+  background: #0a1a14 !important;
   min-height: 100vh;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -84,7 +83,7 @@ onMounted(() => {
 .loading-screen {
   position: fixed;
   inset: 0;
-  background: #0a1929;
+  background: #0a1a14;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,19 +95,19 @@ onMounted(() => {
   margin-bottom: 1.5rem;
 }
 
-.crown-spinner {
+.torrent-spinner {
   animation: pulse-scale 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(0, 119, 182, 0.5));
+  filter: drop-shadow(0 0 20px rgba(0, 255, 135, 0.5));
 }
 
 @keyframes pulse-scale {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 20px rgba(0, 119, 182, 0.5));
+    filter: drop-shadow(0 0 20px rgba(0, 255, 135, 0.5));
   }
   50% {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 30px rgba(72, 202, 228, 0.7));
+    filter: drop-shadow(0 0 30px rgba(96, 239, 255, 0.7));
   }
 }
 

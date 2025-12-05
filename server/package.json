@@ -1,10 +1,10 @@
 {
-  "name": "repackking-server",
+  "name": "torrentgames-server",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx src/database/migrate.ts && tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
     "migrate": "tsx src/database/migrate.ts"

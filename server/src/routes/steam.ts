@@ -70,11 +70,21 @@ interface ResizeOptions {
   fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside'
 }
 
-// Cover image size (for game cards - 460x215 is Steam's header size, we scale up a bit)
-const COVER_IMAGE_SIZE: ResizeOptions = { width: 460, height: 215, fit: 'cover' }
+// Cover image size - resize to fit card dimensions (300x400) while keeping full image
+const COVER_IMAGE_SIZE: ResizeOptions = { width: 300, height: 400, fit: 'contain' }
 
-// Screenshot size (1920x1080 max, maintaining aspect ratio)
+// Screenshot size (1280x720 for consistency)
 const SCREENSHOT_SIZE: ResizeOptions = { width: 1280, height: 720, fit: 'inside' }
+
+// Get Steam library capsule image URL (portrait 600x900)
+function getSteamLibraryCapsuleUrl(appId: string): string {
+  return `https://steamcdn-a.akamaihd.net/steam/apps/${appId}/library_600x900.jpg`
+}
+
+// Get Steam header image URL as fallback (landscape 460x215)
+function getSteamHeaderUrl(appId: string): string {
+  return `https://steamcdn-a.akamaihd.net/steam/apps/${appId}/header.jpg`
+}
 
 // Helper to download and optionally resize image from URL
 async function downloadImage(
@@ -262,15 +272,19 @@ router.post('/fetch', authenticateToken, async (req: Request, res: Response) => 
     // Extract genres
     const genres = data.genres?.map(g => g.description) || []
 
-    // Download header image and screenshots
+    // Download cover image and screenshots
     const uploadDir = path.join(__dirname, '../../../uploads')
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true })
     }
 
     let coverImagePath: string | null = null
-    if (data.header_image) {
-      // Download and resize cover image for cards
+    // Try to get the portrait library capsule image first (600x900)
+    const libraryCapsuleUrl = getSteamLibraryCapsuleUrl(appId)
+    coverImagePath = await downloadImage(libraryCapsuleUrl, uploadDir, COVER_IMAGE_SIZE)
+    
+    // Fallback to header image if library capsule doesn't exist
+    if (!coverImagePath && data.header_image) {
       coverImagePath = await downloadImage(data.header_image, uploadDir, COVER_IMAGE_SIZE)
     }
 
@@ -339,15 +353,19 @@ router.post('/import', authenticateToken, async (req: Request, res: Response) =>
     // Extract genres
     const genres = data.genres?.map(g => g.description) || []
 
-    // Download header image
+    // Download cover image
     const uploadDir = path.join(__dirname, '../../../uploads')
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true })
     }
 
     let coverImagePath: string | null = null
-    if (data.header_image) {
-      // Download and resize cover image for cards
+    // Try to get the portrait library capsule image first (600x900)
+    const libraryCapsuleUrl = getSteamLibraryCapsuleUrl(appId)
+    coverImagePath = await downloadImage(libraryCapsuleUrl, uploadDir, COVER_IMAGE_SIZE)
+    
+    // Fallback to header image if library capsule doesn't exist
+    if (!coverImagePath && data.header_image) {
       coverImagePath = await downloadImage(data.header_image, uploadDir, COVER_IMAGE_SIZE)
     }
 

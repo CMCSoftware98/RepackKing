@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import CrownLogo from '@/components/common/CrownLogo.vue'
+import TorrentLogo from '@/components/common/TorrentLogo.vue'
 
 const isScrolled = ref(false)
 const mobileMenuOpen = ref(false)
@@ -33,9 +33,9 @@ onUnmounted(() => {
     <v-container class="d-flex align-center justify-space-between" style="max-width: 1400px;">
       <!-- Logo -->
       <router-link to="/" class="logo-link d-flex align-center text-decoration-none">
-        <CrownLogo :size="42" :animate="!isScrolled" />
+        <TorrentLogo :size="42" :animate="!isScrolled" />
         <span class="logo-text ml-3">
-          <span class="logo-repack">Repack</span><span class="logo-king">King</span>
+          <span class="logo-torrent">T</span><span class="logo-games">Games</span>
         </span>
       </router-link>
 
@@ -102,9 +102,9 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 
   &.navbar-scrolled {
-    background: rgba(10, 25, 41, 0.95) !important;
+    background: rgba(10, 26, 20, 0.95) !important;
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(72, 202, 228, 0.1);
+    border-bottom: 1px solid rgba(0, 255, 135, 0.1);
   }
 
   :deep(.v-toolbar__content) {
@@ -115,8 +115,8 @@ onUnmounted(() => {
 .logo-link {
   &:hover {
     .logo-text {
-      .logo-king {
-        text-shadow: 0 0 20px rgba(72, 202, 228, 0.6);
+      .logo-torrent {
+        text-shadow: 0 0 20px rgba(0, 255, 135, 0.8);
       }
     }
   }
@@ -128,16 +128,17 @@ onUnmounted(() => {
   font-weight: 700;
   letter-spacing: -0.5px;
 
-  .logo-repack {
-    color: #ffffff;
-  }
-
-  .logo-king {
-    background: linear-gradient(135deg, #0077b6 0%, #48cae4 100%);
+  .logo-torrent {
+    background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     transition: text-shadow 0.3s ease;
+    font-weight: 800;
+  }
+
+  .logo-games {
+    color: #ffffff;
   }
 }
 
@@ -159,7 +160,7 @@ onUnmounted(() => {
       left: 50%;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #0077b6, #48cae4);
+      background: linear-gradient(90deg, #00ff87, #60efff);
       transition: all 0.3s ease;
       transform: translateX(-50%);
       border-radius: 1px;
@@ -175,7 +176,7 @@ onUnmounted(() => {
     }
 
     &.router-link-active {
-      color: #48cae4;
+      color: #00ff87;
 
       &::after {
         width: 60%;
@@ -189,8 +190,8 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 
   &:hover {
-    color: #48cae4;
-    background: rgba(72, 202, 228, 0.1);
+    color: #00ff87;
+    background: rgba(0, 255, 135, 0.1);
   }
 }
 
@@ -199,9 +200,9 @@ onUnmounted(() => {
   top: 72px;
   left: 0;
   right: 0;
-  background: rgba(10, 25, 41, 0.98);
+  background: rgba(10, 26, 20, 0.98);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(72, 202, 228, 0.1);
+  border-bottom: 1px solid rgba(0, 255, 135, 0.1);
   padding: 0.5rem 0;
 }
 
@@ -209,11 +210,11 @@ onUnmounted(() => {
   color: rgba(255, 255, 255, 0.85);
 
   &:hover {
-    background: rgba(72, 202, 228, 0.1);
+    background: rgba(0, 255, 135, 0.1);
   }
 
   :deep(.v-list-item__prepend) {
-    color: #48cae4;
+    color: #00ff87;
   }
 }
 

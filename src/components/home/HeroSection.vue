@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import CrownLogo from '@/components/common/CrownLogo.vue'
+import TorrentLogo from '@/components/common/TorrentLogo.vue'
 import SearchBar from './SearchBar.vue'
 import { analyticsApi, type PublicStats } from '@/services/api'
 
@@ -116,7 +116,7 @@ onMounted(() => {
       <div class="hero-inner" :class="{ 'is-loaded': isLoaded }">
         <!-- Animated Logo -->
         <div class="hero-logo">
-          <CrownLogo :size="80" :animate="true" />
+          <TorrentLogo :size="80" :animate="true" />
         </div>
 
         <!-- Title -->
@@ -193,8 +193,8 @@ onMounted(() => {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(0, 119, 182, 0.03) 50%,
-    rgba(0, 180, 216, 0.05) 100%
+    rgba(0, 255, 135, 0.03) 50%,
+    rgba(96, 239, 255, 0.05) 100%
   );
   border-radius: 40%;
 
@@ -241,7 +241,7 @@ onMounted(() => {
   position: absolute;
   width: var(--size);
   height: var(--size);
-  background: radial-gradient(circle, #48cae4 0%, transparent 70%);
+  background: radial-gradient(circle, #00ff87 0%, transparent 70%);
   border-radius: 50%;
   left: var(--x);
   bottom: -10px;
@@ -354,7 +354,7 @@ onMounted(() => {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     font-weight: 700;
-    color: #48cae4;
+    color: #00ff87;
     min-width: 60px;
   }
 
@@ -371,7 +371,7 @@ onMounted(() => {
     background: linear-gradient(
       180deg,
       transparent 0%,
-      rgba(72, 202, 228, 0.4) 50%,
+      rgba(0, 255, 135, 0.4) 50%,
       transparent 100%
     );
   }

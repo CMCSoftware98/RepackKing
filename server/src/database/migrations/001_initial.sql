@@ -1,5 +1,5 @@
 -- Migration: 001_initial
--- Description: Initial database schema for RepackKing
+-- Description: Initial database schema for TorrentGames
 
 -- Games table
 CREATE TABLE IF NOT EXISTS games (

@@ -14,11 +14,11 @@ const footerLinks = [
       <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
         <path 
           d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z" 
-          fill="rgba(13, 33, 55, 0.5)"
+          fill="rgba(13, 42, 31, 0.5)"
         />
         <path 
           d="M0,80 C360,20 720,100 1080,40 C1260,10 1380,60 1440,80 L1440,120 L0,120 Z" 
-          fill="#0d2137"
+          fill="#0d2a1f"
         />
       </svg>
     </div>
@@ -28,7 +28,7 @@ const footerLinks = [
         <div class="footer-main d-flex flex-column flex-sm-row justify-space-between align-center">
           <!-- Copyright -->
           <p class="text-medium-emphasis text-body-2 mb-3 mb-sm-0">
-            &copy; {{ currentYear }} RepackKing. All rights reserved.
+            &copy; {{ currentYear }} TorrentGames. All rights reserved.
           </p>
 
           <!-- Footer Links -->
@@ -68,7 +68,7 @@ const footerLinks = [
 }
 
 .footer-content {
-  background: #0d2137;
+  background: #0d2a1f;
   padding: 1.5rem 0;
 }
 
@@ -83,7 +83,7 @@ const footerLinks = [
   transition: all 0.3s ease;
 
   &:hover {
-    color: #48cae4;
+    color: #00ff87;
   }
 }
 </style>

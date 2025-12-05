@@ -8,7 +8,7 @@ const router = createRouter({
       name: 'home',
       component: () => import('@/views/HomeView.vue'),
       meta: {
-        title: 'RepackKing - Discover Your Next Gaming Adventure'
+        title: 'TGames - Discover Your Next Gaming Adventure'
       }
     },
     {
@@ -16,7 +16,7 @@ const router = createRouter({
       name: 'browse',
       component: () => import('@/views/BrowseView.vue'),
       meta: {
-        title: 'Browse Games - RepackKing'
+        title: 'Browse Games - TGames'
       }
     },
     {
@@ -24,7 +24,7 @@ const router = createRouter({
       name: 'game-detail',
       component: () => import('@/views/GameDetailView.vue'),
       meta: {
-        title: 'Game Details - RepackKing'
+        title: 'Game Details - TGames'
       }
     },
     {
@@ -32,7 +32,7 @@ const router = createRouter({
       name: 'report',
       component: () => import('@/views/ReportView.vue'),
       meta: {
-        title: 'Report a Problem - RepackKing'
+        title: 'Report a Problem - TGames'
       }
     },
     {
@@ -40,7 +40,7 @@ const router = createRouter({
       name: 'dmca',
       component: () => import('@/views/DmcaView.vue'),
       meta: {
-        title: 'DMCA Policy - RepackKing'
+        title: 'DMCA Policy - TGames'
       }
     },
     {
@@ -48,7 +48,7 @@ const router = createRouter({
       name: 'report-status',
       component: () => import('@/views/ReportStatusView.vue'),
       meta: {
-        title: 'Check Submission Status - RepackKing'
+        title: 'Check Submission Status - TGames'
       }
     },
     {
@@ -56,7 +56,7 @@ const router = createRouter({
       name: 'report-status-tracking',
       component: () => import('@/views/ReportStatusView.vue'),
       meta: {
-        title: 'Submission Status - RepackKing'
+        title: 'Submission Status - TGames'
       }
     },
     // Admin Routes
@@ -65,7 +65,7 @@ const router = createRouter({
       name: 'admin-login',
       component: () => import('@/views/AdminLoginView.vue'),
       meta: {
-        title: 'Admin Login - RepackKing',
+        title: 'Admin Login - TGames',
         hideLayout: true
       }
     },
@@ -74,7 +74,7 @@ const router = createRouter({
       name: 'admin-dashboard',
       component: () => import('@/views/AdminDashboard.vue'),
       meta: {
-        title: 'Admin Dashboard - RepackKing',
+        title: 'Admin Dashboard - TGames',
         requiresAuth: true
       }
     },
@@ -83,7 +83,7 @@ const router = createRouter({
       name: 'admin-games',
       component: () => import('@/views/AdminGamesView.vue'),
       meta: {
-        title: 'Manage Games - RepackKing',
+        title: 'Manage Games - TGames',
         requiresAuth: true
       }
     },
@@ -92,7 +92,7 @@ const router = createRouter({
       name: 'admin-notices',
       component: () => import('@/views/AdminNoticesView.vue'),
       meta: {
-        title: 'DMCA Notices - RepackKing',
+        title: 'DMCA Notices - TGames',
         requiresAuth: true
       }
     },
@@ -114,7 +114,7 @@ const router = createRouter({
 // Navigation guard for auth
 router.beforeEach(async (to, from, next) => {
   // Set page title
-  document.title = (to.meta.title as string) || 'RepackKing'
+  document.title = (to.meta.title as string) || 'TGames'
   
   // Check if route requires authentication
   if (to.meta.requiresAuth) {

@@ -253,7 +253,7 @@ onMounted(async () => {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #48cae4 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #00ff87 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -278,16 +278,16 @@ onMounted(async () => {
     flex: 2;
     
     :deep(.v-field) {
-      background: rgba(13, 33, 55, 0.8);
+      background: rgba(13, 42, 31, 0.8);
       border-radius: 12px;
       
       &:hover {
-        background: rgba(13, 33, 55, 0.9);
+        background: rgba(13, 42, 31, 0.9);
       }
     }
     
     :deep(.v-field--focused) {
-      background: rgba(13, 33, 55, 1);
+      background: rgba(13, 42, 31, 1);
     }
   }
 
@@ -296,16 +296,16 @@ onMounted(async () => {
     min-width: 180px;
     
     :deep(.v-field) {
-      background: rgba(13, 33, 55, 0.8);
+      background: rgba(13, 42, 31, 0.8);
       border-radius: 12px;
       
       &:hover {
-        background: rgba(13, 33, 55, 0.9);
+        background: rgba(13, 42, 31, 0.9);
       }
     }
     
     :deep(.v-field--focused) {
-      background: rgba(13, 33, 55, 1);
+      background: rgba(13, 42, 31, 1);
     }
   }
 }

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import { v4 as uuidv4 } from 'uuid'
 import { authenticateToken, AuthRequest } from '../middleware/auth.js'
 import fs from 'fs'
+import sharp from 'sharp'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,17 +18,11 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true })
 }
 
-// Configure multer storage
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => {
-    cb(null, uploadDir)
-  },
-  filename: (_req, file, cb) => {
-    const ext = path.extname(file.originalname)
-    const filename = `${uuidv4()}${ext}`
-    cb(null, filename)
-  }
-})
+// Cover image size - resize to fit card dimensions while keeping full image
+const COVER_IMAGE_SIZE = { width: 300, height: 400 }
+
+// Configure multer to use memory storage for processing
+const storage = multer.memoryStorage()
 
 // File filter - only images
 const fileFilter = (_req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
@@ -48,19 +43,36 @@ const upload = multer({
 })
 
 // POST /api/upload - Upload cover image (admin only)
-router.post('/', authenticateToken, upload.single('image'), (req: AuthRequest, res: Response) => {
-  if (!req.file) {
-    res.status(400).json({ error: 'No file uploaded' })
-    return
-  }
+router.post('/', authenticateToken, upload.single('image'), async (req: AuthRequest, res: Response) => {
+  try {
+    if (!req.file) {
+      res.status(400).json({ error: 'No file uploaded' })
+      return
+    }
 
-  const imageUrl = `/uploads/${req.file.filename}`
-  
-  res.json({
-    success: true,
-    url: imageUrl,
-    filename: req.file.filename
-  })
+    const filename = `cover_${uuidv4()}.jpg`
+    const outputPath = path.join(uploadDir, filename)
+    
+    // Process image - resize to fit card dimensions while keeping full image visible
+    await sharp(req.file.buffer)
+      .resize(COVER_IMAGE_SIZE.width, COVER_IMAGE_SIZE.height, {
+        fit: 'contain',  // Keep full image, fit within bounds
+        background: { r: 0, g: 0, b: 0, alpha: 0 }  // Transparent background for any padding
+      })
+      .jpeg({ quality: 85, progressive: true })
+      .toFile(outputPath)
+
+    const imageUrl = `/uploads/${filename}`
+    
+    res.json({
+      success: true,
+      url: imageUrl,
+      filename: filename
+    })
+  } catch (error) {
+    console.error('Error processing image:', error)
+    res.status(500).json({ error: 'Failed to process image' })
+  }
 })
 
 export default router

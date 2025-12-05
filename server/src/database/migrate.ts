@@ -7,7 +7,8 @@ import bcrypt from 'bcryptjs'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const DB_PATH = path.join(__dirname, '../../data/repackking.db')
+// Use DATABASE_PATH env var for production, otherwise use local ./data/torrentgames.db for development
+const DB_PATH = process.env.DATABASE_PATH || path.join(__dirname, '../../data/torrentgames.db')
 const MIGRATIONS_DIR = path.join(__dirname, 'migrations')
 
 // Ensure data directory exists
@@ -15,6 +16,8 @@ const dataDir = path.dirname(DB_PATH)
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true })
 }
+
+console.log(`Migration database location: ${DB_PATH}`)
 
 const db = new Database(DB_PATH)
 

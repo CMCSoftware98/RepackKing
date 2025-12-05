@@ -723,7 +723,7 @@ onUnmounted(() => {
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     aspect-ratio: 3 / 4;
-    background: rgba(13, 33, 55, 0.8);
+    background: rgba(13, 42, 31, 0.8);
   }
 
   &__image {
@@ -742,7 +742,7 @@ onUnmounted(() => {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 700;
-    background: linear-gradient(135deg, #ffffff 0%, #48cae4 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #00ff87 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -764,7 +764,7 @@ onUnmounted(() => {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #48cae4;
+    color: #00ff87;
     margin-bottom: 0.75rem;
   }
 
@@ -776,10 +776,10 @@ onUnmounted(() => {
   }
 
   &__requirements {
-    background: rgba(13, 33, 55, 0.5);
+    background: rgba(13, 42, 31, 0.5);
     border-radius: 12px;
     padding: 1.25rem;
-    border: 1px solid rgba(72, 202, 228, 0.1);
+    border: 1px solid rgba(0, 255, 135, 0.1);
   }
 
   &__actions {
@@ -803,7 +803,7 @@ onUnmounted(() => {
   height: 100%;
 
   &--recommended {
-    background: rgba(72, 202, 228, 0.1);
+    background: rgba(0, 255, 135, 0.1);
   }
 }
 
@@ -811,7 +811,7 @@ onUnmounted(() => {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #48cae4;
+  color: #00ff87;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -822,12 +822,12 @@ onUnmounted(() => {
 
   :deep(tr) {
     &:hover {
-      background: rgba(72, 202, 228, 0.05) !important;
+      background: rgba(0, 255, 135, 0.05) !important;
     }
   }
 
   :deep(td) {
-    border-bottom: 1px solid rgba(72, 202, 228, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 255, 135, 0.1) !important;
     padding: 0.5rem 0.75rem;
     font-size: 0.85rem;
 
@@ -844,7 +844,7 @@ onUnmounted(() => {
 
 // Rating Dialog Styles
 .rating-dialog {
-  background: rgba(13, 33, 55, 0.95) !important;
+  background: rgba(13, 42, 31, 0.95) !important;
   backdrop-filter: blur(10px);
 }
 
@@ -1027,7 +1027,7 @@ onUnmounted(() => {
   
   &.active {
     opacity: 1;
-    border-color: #48cae4;
+    border-color: #00ff87;
   }
 }
 </style>

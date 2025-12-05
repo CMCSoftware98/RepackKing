@@ -37,13 +37,13 @@
   }
 }
 
-// Crown glow effect
-@keyframes crown-glow {
+// Torrent glow effect
+@keyframes torrent-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(0, 119, 182, 0.6));
+    filter: drop-shadow(0 0 8px rgba(0, 255, 135, 0.6));
   }
   50% {
-    filter: drop-shadow(0 0 16px rgba(72, 202, 228, 0.8));
+    filter: drop-shadow(0 0 16px rgba(96, 239, 255, 0.8));
   }
 }
 
@@ -170,8 +170,8 @@
   animation: float 3s ease-in-out infinite;
 }
 
-.animate-crown-glow {
-  animation: crown-glow 2s ease-in-out infinite;
+.animate-torrent-glow {
+  animation: torrent-glow 2s ease-in-out infinite;
 }
 
 // Skeleton shimmer

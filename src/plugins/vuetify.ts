@@ -4,29 +4,29 @@ import { createVuetify, type ThemeDefinition } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-const oceanDarkTheme: ThemeDefinition = {
+const torrentDarkTheme: ThemeDefinition = {
   dark: true,
   colors: {
-    background: '#0a1929',
-    surface: '#0d2137',
-    'surface-variant': '#132f4c',
-    'surface-bright': '#1a3a5c',
-    primary: '#0077b6',
-    'primary-darken-1': '#005f8a',
-    secondary: '#00b4d8',
-    'secondary-darken-1': '#0096b4',
-    accent: '#48cae4',
+    background: '#0a1a14',
+    surface: '#0d2a1f',
+    'surface-variant': '#133d2c',
+    'surface-bright': '#1a5c42',
+    primary: '#00ff87',
+    'primary-darken-1': '#00b36b',
+    secondary: '#60efff',
+    'secondary-darken-1': '#00bcd4',
+    accent: '#00d4aa',
     error: '#ff5252',
-    info: '#2196F3',
-    success: '#4caf50',
+    info: '#60efff',
+    success: '#00ff87',
     warning: '#ffc107',
     'on-background': '#ffffff',
-    'on-surface': '#b0bec5',
-    'on-primary': '#ffffff',
-    'on-secondary': '#000000',
+    'on-surface': '#a8d5c2',
+    'on-primary': '#0a1a14',
+    'on-secondary': '#0a1a14',
   },
   variables: {
-    'border-color': '#1e4976',
+    'border-color': '#1e7654',
     'border-opacity': 0.12,
     'high-emphasis-opacity': 1,
     'medium-emphasis-opacity': 0.7,
@@ -38,10 +38,10 @@ const oceanDarkTheme: ThemeDefinition = {
     'activated-opacity': 0.12,
     'pressed-opacity': 0.12,
     'dragged-opacity': 0.08,
-    'theme-kbd': '#0d2137',
+    'theme-kbd': '#0d2a1f',
     'theme-on-kbd': '#ffffff',
-    'theme-code': '#132f4c',
-    'theme-on-code': '#48cae4',
+    'theme-code': '#133d2c',
+    'theme-on-code': '#00ff87',
   }
 }
 
@@ -49,9 +49,9 @@ export default createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: 'oceanDark',
+    defaultTheme: 'torrentDark',
     themes: {
-      oceanDark: oceanDarkTheme,
+      torrentDark: torrentDarkTheme,
     },
   },
   defaults: {

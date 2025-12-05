@@ -149,13 +149,13 @@ function copyTrackingUrl() {
         <div class="dmca-content">
           <!-- Compliance Statement -->
           <p class="mb-4">
-            <strong>REPACKKING.COM</strong> is in compliance with 17 U.S.C. &sect; 512 and the Digital Millennium 
+            <strong>TORRENTGAMES.COM</strong> is in compliance with 17 U.S.C. &sect; 512 and the Digital Millennium 
             Copyright Act (DMCA). It is our policy to respond to any infringement notices and take appropriate 
             actions under the Digital Millennium Copyright Act (DMCA) and other applicable intellectual property laws.
           </p>
 
           <p class="mb-4">
-            If your copyrighted material has been posted on <strong>REPACKKING.COM</strong> or if hyperlinks to your 
+            If your copyrighted material has been posted on <strong>TORRENTGAMES.COM</strong> or if hyperlinks to your 
             copyrighted material are returned through our search engine and you want this material removed, please 
             submit a DMCA notice using the form below.
           </p>
@@ -409,7 +409,7 @@ function copyTrackingUrl() {
           
           <v-card variant="tonal" class="pa-4 mb-3 disclaimer-card">
             <p class="mb-0">
-              <strong>Disclaimer 1:</strong> RepackKing is absolutely legal and contains only links to other 
+              <strong>Disclaimer 1:</strong> TorrentGames is absolutely legal and contains only links to other 
               sites. We do not host any files (rar, iso, torrent, etc.) on our server.
             </p>
           </v-card>
@@ -434,8 +434,8 @@ function copyTrackingUrl() {
 }
 
 .dmca-card {
-  background: rgba(13, 33, 55, 0.8) !important;
-  border: 1px solid rgba(72, 202, 228, 0.1);
+  background: rgba(13, 42, 31, 0.8) !important;
+  border: 1px solid rgba(0, 255, 135, 0.1);
   border-radius: 16px;
 }
 
@@ -443,7 +443,7 @@ function copyTrackingUrl() {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #48cae4 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #00ff87 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -453,7 +453,7 @@ function copyTrackingUrl() {
   h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    color: #48cae4;
+    color: #00ff87;
   }
 
   p {
@@ -464,11 +464,11 @@ function copyTrackingUrl() {
 
 .game-search-card {
   background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(72, 202, 228, 0.2) !important;
+  border-color: rgba(0, 255, 135, 0.2) !important;
 }
 
 .game-search-results {
-  background: rgba(13, 33, 55, 0.95);
+  background: rgba(13, 42, 31, 0.95);
   border-radius: 8px;
   max-height: 250px;
   overflow-y: auto;
@@ -477,13 +477,13 @@ function copyTrackingUrl() {
     cursor: pointer;
     
     &:hover {
-      background: rgba(72, 202, 228, 0.1);
+      background: rgba(0, 255, 135, 0.1);
     }
   }
 }
 
 .response-card {
-  border-color: rgba(72, 202, 228, 0.3) !important;
+  border-color: rgba(0, 255, 135, 0.3) !important;
   background: rgba(0, 0, 0, 0.2);
 }
 
